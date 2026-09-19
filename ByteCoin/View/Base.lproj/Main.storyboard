@@ -1,100 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ByteCoin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5TP-yw-RBT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct2-jk-pgH">
-                                <rect key="frame" x="0.0" y="646" width="414" height="216"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="S7z-Rh-fJa"/>
-                                </constraints>
-                            </pickerView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="WWW-oe-lHd">
-                                <rect key="frame" x="0.0" y="54" width="414" height="165"/>
+
+                            <!-- ═══ HEADER: horizontal stack (BTC icon + title/subtitle) ═══ -->
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-stk-vw">
+                                <rect key="frame" x="28" y="83" width="250" height="54"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ByteCoin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAM-79-vXn">
-                                        <rect key="frame" x="92" y="0.0" width="230" height="60"/>
+                                    <!-- Small BTC icon — tag 10 used by float animation -->
+                                    <imageView tag="10" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinsign.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-btc-iv">
+                                        <rect key="frame" x="0" y="16" width="22" height="22"/>
+                                        <color key="tintColor" name="Icon Color"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="bMu-oK-jI2"/>
-                                            <constraint firstAttribute="height" constant="60" id="szc-9z-u5Q"/>
+                                            <constraint firstAttribute="width" constant="22" id="hdr-ic-w"/>
+                                            <constraint firstAttribute="height" constant="22" id="hdr-ic-h"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
-                                        <color key="textColor" name="Title Color"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y91-qX-d96" userLabel="Coin View">
-                                        <rect key="frame" x="20" y="85" width="374" height="80"/>
+                                    </imageView>
+                                    <!-- Vertical stack: "ByteCoin" + "Bitcoin Exchange" -->
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="leading" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-txt-sv">
+                                        <rect key="frame" x="34" y="0" width="216" height="54"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ocx-jo-FtC">
-                                                <rect key="frame" x="0.0" y="0.0" width="364" height="80"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ByteCoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-ttl-lb">
+                                                <rect key="frame" x="0" y="0" width="216" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                                <color key="textColor" name="Title Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin Exchange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-sub-lb">
+                                                <rect key="frame" x="0" y="38" width="216" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="0.45" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+
+                            <!-- ═══ CONTENT AREA (transparent — fills space between header and picker) ═══ -->
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnt-area-vw" userLabel="Content Area">
+                                <rect key="frame" x="0" y="137" width="430" height="535"/>
+                                <subviews>
+
+                                    <!-- ─── GLASS CARD — IBOutlet: coinCardView ─── -->
+                                    <view clipsSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crd-main-vw" userLabel="Coin Card View">
+                                        <rect key="frame" x="20" y="130" width="390" height="275"/>
+                                        <subviews>
+
+                                            <!-- "BITCOIN VALUE" eyebrow label -->
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BITCOIN VALUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btc-val-lb">
+                                                <rect key="frame" x="28" y="36" width="334" height="15"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" white="1" alpha="0.38" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+
+                                            <!-- Price row: ₿ symbol + big number -->
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="prc-row-sv">
+                                                <rect key="frame" x="28" y="67" width="334" height="68"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinsign.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qdw-gh-nWc">
-                                                        <rect key="frame" x="0.0" y="0.5" width="80" height="79.5"/>
-                                                        <color key="tintColor" name="Icon Color"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="0gP-tk-0h7"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2a-Ax-iRV">
-                                                        <rect key="frame" x="90" y="25" width="213.5" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <!-- ₿ glyph -->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="₿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btc-sym-lb">
+                                                        <rect key="frame" x="0" y="4" width="38" height="60"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="42"/>
+                                                        <color key="textColor" name="Icon Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-y0-nXv">
-                                                        <rect key="frame" x="313.5" y="25" width="50.5" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <!-- Bitcoin price number — IBOutlet: bitcoinLabel -->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" minimumScaleFactor="0.35" translatesAutoresizingMaskIntoConstraints="NO" id="N2a-Ax-iRV">
+                                                        <rect key="frame" x="46" y="0" width="288" height="68"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="56"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="Qdw-gh-nWc" firstAttribute="top" secondItem="Ocx-jo-FtC" secondAttribute="top" id="4pb-uD-1ll"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Qdw-gh-nWc" secondAttribute="bottom" id="KsG-dN-BT0"/>
-                                                </constraints>
                                             </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+
+                                            <!-- "per 1 BTC" subtext -->
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="per 1 BTC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbt-lbl-vw">
+                                                <rect key="frame" x="28" y="147" width="334" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="0.38" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+
+                                            <!-- Currency pill — IBOutlet: currencyPillView -->
+                                            <view clipsSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pill-ctn-vw" userLabel="Currency Pill">
+                                                <rect key="frame" x="135" y="195" width="120" height="44"/>
+                                                <subviews>
+                                                    <!-- Currency code label — IBOutlet: currencyLabel -->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-y0-nXv">
+                                                        <rect key="frame" x="20" y="10" width="56" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <!-- Chevron down SF symbol -->
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ccy-chv-iv">
+                                                        <rect key="frame" x="82" y="14" width="14" height="16"/>
+                                                        <color key="tintColor" white="1" alpha="0.55" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="14" id="chv-w-c"/>
+                                                            <constraint firstAttribute="height" constant="16" id="chv-h-c"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="0.07" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="pill-w-c"/>
+                                                    <constraint firstAttribute="height" constant="44" id="pill-h-c"/>
+                                                    <constraint firstItem="MAn-y0-nXv" firstAttribute="leading" secondItem="pill-ctn-vw" secondAttribute="leading" constant="20" id="pill-lbl-lead-c"/>
+                                                    <constraint firstItem="MAn-y0-nXv" firstAttribute="centerY" secondItem="pill-ctn-vw" secondAttribute="centerY" id="pill-lbl-cy-c"/>
+                                                    <constraint firstItem="ccy-chv-iv" firstAttribute="leading" secondItem="MAn-y0-nXv" secondAttribute="trailing" constant="6" id="pill-chv-lead-c"/>
+                                                    <constraint firstItem="ccy-chv-iv" firstAttribute="centerY" secondItem="pill-ctn-vw" secondAttribute="centerY" id="pill-chv-cy-c"/>
+                                                </constraints>
+                                            </view><!-- end pill -->
+
+                                        </subviews><!-- end card subviews -->
+
+                                        <!-- Card background: dark glass surface -->
+                                        <color key="backgroundColor" red="0.071" green="0.094" blue="0.165" alpha="0.92" colorSpace="custom" customColorSpace="sRGB"/>
+
+                                        <!-- Card internal Auto Layout constraints -->
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Ocx-jo-FtC" secondAttribute="bottom" id="4g7-Ag-CSv"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ocx-jo-FtC" secondAttribute="trailing" constant="10" id="Qu0-hp-NgW"/>
-                                            <constraint firstItem="Ocx-jo-FtC" firstAttribute="leading" secondItem="y91-qX-d96" secondAttribute="leading" id="YrU-Yp-Yu8"/>
-                                            <constraint firstItem="Ocx-jo-FtC" firstAttribute="top" secondItem="y91-qX-d96" secondAttribute="top" id="joV-wc-L2Q"/>
-                                            <constraint firstAttribute="height" constant="80" id="pPp-uS-nxw"/>
+                                            <!-- "BITCOIN VALUE" label: top, leading, trailing -->
+                                            <constraint firstItem="btc-val-lb" firstAttribute="top" secondItem="crd-main-vw" secondAttribute="top" constant="36" id="bvl-top-c"/>
+                                            <constraint firstItem="btc-val-lb" firstAttribute="leading" secondItem="crd-main-vw" secondAttribute="leading" constant="28" id="bvl-lead-c"/>
+                                            <constraint firstItem="crd-main-vw" firstAttribute="trailing" secondItem="btc-val-lb" secondAttribute="trailing" constant="28" id="bvl-trail-c"/>
+                                            <!-- Price row: top, leading, trailing -->
+                                            <constraint firstItem="prc-row-sv" firstAttribute="top" secondItem="btc-val-lb" secondAttribute="bottom" constant="20" id="prs-top-c"/>
+                                            <constraint firstItem="prc-row-sv" firstAttribute="leading" secondItem="crd-main-vw" secondAttribute="leading" constant="28" id="prs-lead-c"/>
+                                            <constraint firstItem="crd-main-vw" firstAttribute="trailing" secondItem="prc-row-sv" secondAttribute="trailing" constant="28" id="prs-trail-c"/>
+                                            <!-- "per 1 BTC": top, leading, trailing -->
+                                            <constraint firstItem="pbt-lbl-vw" firstAttribute="top" secondItem="prc-row-sv" secondAttribute="bottom" constant="10" id="pbt-top-c"/>
+                                            <constraint firstItem="pbt-lbl-vw" firstAttribute="leading" secondItem="crd-main-vw" secondAttribute="leading" constant="28" id="pbt-lead-c"/>
+                                            <constraint firstItem="crd-main-vw" firstAttribute="trailing" secondItem="pbt-lbl-vw" secondAttribute="trailing" constant="28" id="pbt-trail-c"/>
+                                            <!-- Pill: top from "per 1 BTC", centered, bottom anchors card height -->
+                                            <constraint firstItem="pill-ctn-vw" firstAttribute="top" secondItem="pbt-lbl-vw" secondAttribute="bottom" constant="32" id="pill-top-c"/>
+                                            <constraint firstItem="pill-ctn-vw" firstAttribute="centerX" secondItem="crd-main-vw" secondAttribute="centerX" id="pill-cx-c"/>
+                                            <constraint firstItem="crd-main-vw" firstAttribute="bottom" secondItem="pill-ctn-vw" secondAttribute="bottom" constant="32" id="pill-bot-c"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="40"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
+                                    </view><!-- end crd-main-vw -->
+
+                                </subviews><!-- end content area subviews -->
+
+                                <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
+
+                                <!-- Content area internal constraints: card is centered -->
+                                <constraints>
+                                    <constraint firstItem="crd-main-vw" firstAttribute="centerY" secondItem="cnt-area-vw" secondAttribute="centerY" id="crd-cy-c"/>
+                                    <constraint firstItem="crd-main-vw" firstAttribute="leading" secondItem="cnt-area-vw" secondAttribute="leading" constant="20" id="crd-lead-c"/>
+                                    <constraint firstItem="cnt-area-vw" firstAttribute="trailing" secondItem="crd-main-vw" secondAttribute="trailing" constant="20" id="crd-trail-c"/>
+                                </constraints>
+                            </view><!-- end cnt-area-vw -->
+
+                            <!-- ═══ PICKER CONTAINER — IBOutlet: pickerContainerView ═══ -->
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkr-ctn-vw" userLabel="Picker Container">
+                                <rect key="frame" x="0" y="672" width="430" height="260"/>
+                                <subviews>
+                                    <!-- UIPickerView — IBOutlet: currencyPicker -->
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct2-jk-pgH">
+                                        <rect key="frame" x="0" y="0" width="430" height="216"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="216" id="S7z-Rh-fJa"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="picker-datasource"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="picker-delegate"/>
+                                        </connections>
+                                    </pickerView>
                                 </subviews>
-                            </stackView>
-                        </subviews>
+                                <color key="backgroundColor" red="0.051" green="0.067" blue="0.137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="pkr-h-c"/>
+                                    <constraint firstItem="ct2-jk-pgH" firstAttribute="top" secondItem="pkr-ctn-vw" secondAttribute="top" id="picker-top-c"/>
+                                    <constraint firstItem="ct2-jk-pgH" firstAttribute="leading" secondItem="pkr-ctn-vw" secondAttribute="leading" id="picker-lead-c"/>
+                                    <constraint firstItem="pkr-ctn-vw" firstAttribute="trailing" secondItem="ct2-jk-pgH" secondAttribute="trailing" id="picker-trail-c"/>
+                                </constraints>
+                            </view><!-- end pkr-ctn-vw -->
+
+                        </subviews><!-- end root view subviews -->
+
+                        <!-- ═══ ROOT VIEW CONSTRAINTS ═══ -->
                         <color key="backgroundColor" name="Background Color"/>
                         <constraints>
-                            <constraint firstItem="ct2-jk-pgH" firstAttribute="trailing" secondItem="CjI-yV-vnC" secondAttribute="trailing" id="0NU-ng-zoE"/>
-                            <constraint firstItem="WWW-oe-lHd" firstAttribute="top" secondItem="CjI-yV-vnC" secondAttribute="top" constant="10" id="6gh-lx-Pg8"/>
-                            <constraint firstItem="WWW-oe-lHd" firstAttribute="leading" secondItem="CjI-yV-vnC" secondAttribute="leading" id="DHX-HO-65x"/>
-                            <constraint firstItem="CjI-yV-vnC" firstAttribute="trailing" secondItem="WWW-oe-lHd" secondAttribute="trailing" id="OZU-yE-hqJ"/>
-                            <constraint firstItem="ct2-jk-pgH" firstAttribute="leading" secondItem="CjI-yV-vnC" secondAttribute="leading" id="myB-1G-FSo"/>
-                            <constraint firstItem="ct2-jk-pgH" firstAttribute="bottom" secondItem="CjI-yV-vnC" secondAttribute="bottom" id="tCZ-GN-qxe"/>
+                            <!-- Header: top-left aligned -->
+                            <constraint firstItem="hdr-stk-vw" firstAttribute="top" secondItem="CjI-yV-vnC" secondAttribute="top" constant="24" id="hdr-top-c"/>
+                            <constraint firstItem="hdr-stk-vw" firstAttribute="leading" secondItem="CjI-yV-vnC" secondAttribute="leading" constant="28" id="hdr-lead-c"/>
+                            <!-- Content area: from header.bottom to picker.top, full width -->
+                            <constraint firstItem="cnt-area-vw" firstAttribute="top" secondItem="hdr-stk-vw" secondAttribute="bottom" id="cnt-top-c"/>
+                            <constraint firstItem="cnt-area-vw" firstAttribute="bottom" secondItem="pkr-ctn-vw" secondAttribute="top" id="cnt-bot-c"/>
+                            <constraint firstItem="cnt-area-vw" firstAttribute="leading" secondItem="5TP-yw-RBT" secondAttribute="leading" id="cnt-lead-c"/>
+                            <constraint firstItem="5TP-yw-RBT" firstAttribute="trailing" secondItem="cnt-area-vw" secondAttribute="trailing" id="cnt-trail-c"/>
+                            <!-- Picker container: pinned to screen bottom, full width -->
+                            <constraint firstItem="pkr-ctn-vw" firstAttribute="bottom" secondItem="5TP-yw-RBT" secondAttribute="bottom" id="pkr-bot-c"/>
+                            <constraint firstItem="pkr-ctn-vw" firstAttribute="leading" secondItem="5TP-yw-RBT" secondAttribute="leading" id="pkr-lead-c"/>
+                            <constraint firstItem="5TP-yw-RBT" firstAttribute="trailing" secondItem="pkr-ctn-vw" secondAttribute="trailing" id="pkr-trail-c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CjI-yV-vnC"/>
-                    </view>
+                    </view><!-- end root view -->
+
+                    <!-- ═══ IBOUTLET CONNECTIONS ═══ -->
+                    <connections>
+                        <!-- Preserved originals -->
+                        <outlet property="bitcoinLabel"        destination="N2a-Ax-iRV" id="outlet-price"/>
+                        <outlet property="currencyLabel"       destination="MAn-y0-nXv" id="outlet-currency"/>
+                        <outlet property="currencyPicker"      destination="ct2-jk-pgH" id="outlet-picker"/>
+                        <!-- New outlets for programmatic styling -->
+                        <outlet property="coinCardView"        destination="crd-main-vw" id="outlet-card"/>
+                        <outlet property="pickerContainerView" destination="pkr-ctn-vw"  id="outlet-picker-ctn"/>
+                        <outlet property="currencyPillView"    destination="pill-ctn-vw"  id="outlet-pill"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,15 +232,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bitcoinsign.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="bitcoinsign.circle" catalog="system" width="64" height="62"/>
+        <image name="chevron.down" catalog="system" width="20" height="20"/>
+        <namedColor name="Accent Color">
+            <color red="0.000" green="0.761" blue="1.000" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Background Color">
-            <color red="0.50599998235702515" green="0.92500001192092896" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.043" green="0.051" blue="0.102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Icon Color">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.969" green="0.576" blue="0.102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Title Color">
-            <color red="0.18799999356269836" green="0.20800000429153442" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1.000" green="1.000" blue="1.000" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
